@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TodoList extends StatelessWidget {
-  const TodoList({super.key, required this.taskName});
+  const TodoList(
+      {super.key,
+      required this.taskName,
+      required this.completed,
+      this.onChanged});
 
   final String taskName;
+  final bool completed;
+  final Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +21,20 @@ class TodoList extends StatelessWidget {
           color: Colors.deepPurple,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Text(
-          taskName,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
+        child: Row(
+          children: [
+            Checkbox(
+              value: completed,
+              onChanged: onChanged,
+              checkColor: Colors.blue,
+              activeColor: Colors.white,
+              side: const BorderSide(color: Colors.white),
+            ),
+            Text(
+              taskName,
+              style: const TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ],
         ),
       ),
     );
