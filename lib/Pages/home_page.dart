@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/Widgets/adding_task.dart';
 import 'package:todo/Widgets/todo_list.dart';
 
@@ -12,27 +13,32 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _controller = TextEditingController();
 
-  List toDoList = [
-    ['learn flutter', false],
-    ['eat lunch', false]
-  ];
+  final _myBox = Hive.box("task");
 
   void checkBoxChanged(int index) {
     setState(() {
+      List toDoList = _myBox.get('tasks');
       toDoList[index][1] = !toDoList[index][1];
+      _myBox.put("tasks", toDoList);
     });
   }
 
   void deleteTask(int index) {
     setState(() {
+      List toDoList = _myBox.get('tasks');
       toDoList.removeAt(index);
+      _myBox.put('tasks', toDoList);
     });
   }
 
   void newTask() {
     setState(() {
-      toDoList.add([_controller.text, false]);
-      _controller.clear();
+      List toDoList = _myBox.get('tasks');
+      if (_controller.text != '') {
+        toDoList.add([_controller.text, false]);
+        _myBox.put('tasks', toDoList);
+        _controller.clear();
+      }
     });
   }
 
@@ -46,11 +52,11 @@ class _HomePageState extends State<HomePage> {
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(
-          itemCount: toDoList.length,
+          itemCount: _myBox.get('tasks').length,
           itemBuilder: (BuildContext context, index) {
             return TodoList(
-              taskName: toDoList[index][0],
-              completed: toDoList[index][1],
+              taskName: _myBox.get('tasks')[index][0],
+              completed: _myBox.get('tasks')[index][1],
               onChanged: (value) => checkBoxChanged(index),
               delete: (context) => deleteTask(index),
             );
