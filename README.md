@@ -27,13 +27,6 @@ This is a simple Flutter-based todo application that allows users to:
    - Tasks are stored in the app's local storage using the **Hive** package for lightweight and fast storage.
    - This ensures that tasks remain available even after the app is closed and reopened.
 
-## App Architecture
-
-The app follows a simple **Model-View-Controller (MVC)** architecture:
-
-- **Model**: The task model represents the structure of a task (e.g., `Task` class with attributes like `name`, `isCompleted`).
-- **View**: The user interface (UI) includes text fields, buttons, and lists to display tasks and allow interactions.
-- **Controller**: Handles user inputs like adding, deleting, and completing tasks, as well as updating the task list.
 
 ### Local Storage
 - **Hive** is used for data persistence. Tasks are stored in a Hive box, ensuring that data is preserved between app sessions.
