@@ -32,7 +32,13 @@ class TodoList extends StatelessWidget {
             ),
             Text(
               taskName,
-              style: const TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                decoration: completed ? TextDecoration.lineThrough : TextDecoration.none,
+                decorationColor: Colors.white,
+                decorationThickness: 2,
+              ),
             ),
           ],
         ),
