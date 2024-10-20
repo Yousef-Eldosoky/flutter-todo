@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AddingTask extends StatefulWidget {
-  const AddingTask({super.key, required this.controller, this.newTask});
+  const AddingTask({super.key, required this.controller, required this.newTask});
 
   final TextEditingController controller;
-  final Function()? newTask;
+  final Function() newTask;
   @override
   State<AddingTask> createState() => _AddingTaskState();
 }
