@@ -40,9 +40,11 @@ To get the app running, you’ll need to add the following dependencies in your 
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_slidable: ^3.1.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  flutter_slidable: ^3.1.1
+  flutter_launcher_icons: ^0.14.1
 ```
 
 Ensure you also add the necessary **dev_dependencies** for Hive's type adapters if you are using custom objects:
@@ -52,6 +54,16 @@ dev_dependencies:
   hive_generator: ^2.0.1
   build_runner: ^2.4.13
 ```
+
+Also ensure to add the configration for the **flutter_icons** to setup the app icon:
+
+```yaml
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+```
+
 
 ## Installation and Setup
 
