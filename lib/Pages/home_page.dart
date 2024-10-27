@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFFFFF1DB),
       appBar: AppBar(
         title: const Text("Todo App"),
-        backgroundColor: const Color(0xFF88C273),
+        backgroundColor: Colors.pink,
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(
